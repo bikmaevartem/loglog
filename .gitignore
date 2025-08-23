@@ -1,0 +1,60 @@
+# Visual Studio and .NET specific files
+.vs/
+bin/
+obj/
+*.pdb
+*.suo
+*.user
+*.log
+*.bak
+*.ncb
+*.aps
+*.bsc
+*.sbr
+*.res
+*.pch
+*.idb
+*.opt
+*.ilk
+*.lib
+*.exp
+*.map
+*.ipch
+*.obj
+*.tlb
+*.tlh
+*.tmp
+*.vspscc
+*.vssscc
+*.vsscc
+*.vssscc
+*.sln.docstates
+*.csproj.user
+*.csproj.DotSettings
+*.userprefs
+
+# NuGet packages
+packages/
+*.nupkg
+
+# ReSharper and other JetBrains tools
+.idea/
+*.DotSettings.user
+*.resharper
+
+# Rider specific files
+.Rider/
+
+# Visual Studio Code specific files
+.vscode/
+
+# Build artifacts
+build/
+dist/
+
+# Test results
+TestResults/
+
+# Other common temporary files
+temp/
+tmp/
