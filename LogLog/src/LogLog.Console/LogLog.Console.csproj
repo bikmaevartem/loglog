@@ -7,4 +7,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\LogLog.Domain\LogLog.Domain.csproj" />
+    <ProjectReference Include="..\LogLog.UseCases\LogLog.UseCases.csproj" />
+  </ItemGroup>
+
 </Project>

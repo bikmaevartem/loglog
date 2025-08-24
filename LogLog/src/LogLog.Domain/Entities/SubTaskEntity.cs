@@ -1,6 +1,6 @@
 ﻿namespace LogLog.Domain.Entities
 {
-    public class SubTask : BaseTaskEntity
+    public class SubTaskEntity : BaseTaskEntity
     {
         public int TaskId { get; set; }
 

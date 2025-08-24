@@ -2,8 +2,10 @@
 {
     public class TaskEntity : BaseTaskEntity
     {
+        public bool IsExecuting { get; set; }
+
         public bool IsCompleted { get; set; }
 
-        public List<SubTask> SubTasks { get; set; } = new();
+        public List<SubTaskEntity> SubTasks { get; set; } = new();
     }
 }
