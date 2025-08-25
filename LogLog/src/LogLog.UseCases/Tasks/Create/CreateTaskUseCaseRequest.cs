@@ -1,6 +1,6 @@
 ﻿namespace LogLog.UseCases.Tasks.Create
 {
-    public class CreateTaskRequest
+    public class CreateTaskUseCaseRequest
     {
         public string Name { get; set; }
 

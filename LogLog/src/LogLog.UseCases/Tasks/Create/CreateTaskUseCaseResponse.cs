@@ -1,6 +1,6 @@
 ﻿namespace LogLog.UseCases.Tasks.Create
 {
-    public class CreateTaskResponse
+    public class CreateTaskUseCaseResponse
     {
         public int TaskId { get; set; }
     }

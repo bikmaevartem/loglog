@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LogLog.UseCases.Dto
 {
-    internal class PeriodDto
+    internal class PeriodUseCaseDto
     {
     }
 }

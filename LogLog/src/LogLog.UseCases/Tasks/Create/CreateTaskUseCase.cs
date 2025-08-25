@@ -2,7 +2,7 @@
 
 namespace LogLog.UseCases.Tasks.Create
 {
-    public class CreateTaskUseCase : IUseCase<CreateTaskRequest, CreateTaskResponse>
+    public class CreateTaskUseCase : IUseCase<CreateTaskUseCaseRequest, CreateTaskUseCaseResponse>
     {
         private readonly ITaskRepository _taskRepository;
 
@@ -11,10 +11,10 @@ namespace LogLog.UseCases.Tasks.Create
             _taskRepository = taskRepository;
         }
 
-        public async Task<CreateTaskResponse> ExecuteAsync(CreateTaskRequest request)
+        public async Task<CreateTaskUseCaseResponse> ExecuteAsync(CreateTaskUseCaseRequest request)
         {
             var task = await _taskRepository.CreateAsync(name: request.Name, description: request.Description);
-            return new CreateTaskResponse { TaskId = task.Id };
+            return new CreateTaskUseCaseResponse { TaskId = task.Id };
         }
     }
 }

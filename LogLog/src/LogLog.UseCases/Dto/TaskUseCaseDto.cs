@@ -1,6 +1,6 @@
 ﻿namespace LogLog.UseCases.Dto
 {
-    public class TaskDto
+    public class TaskUseCaseDto
     {
         public int Id { get; set; }
 

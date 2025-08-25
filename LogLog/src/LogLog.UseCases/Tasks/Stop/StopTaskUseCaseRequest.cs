@@ -1,6 +1,6 @@
 ﻿namespace LogLog.UseCases.Tasks.Stop
 {
-    public class StopTaskRequest
+    public class StopTaskUseCaseRequest
     {
         public int TaskId { get; set; }
     }

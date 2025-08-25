@@ -1,6 +1,6 @@
 ﻿namespace LogLog.UseCases.Tasks.GetAllWithoutDetails
 {
-    public class GetAllTasksWithoutDetailsRequest
+    public class GetAllTasksWithoutDetailsUseCaseRequest
     {
     }
 }

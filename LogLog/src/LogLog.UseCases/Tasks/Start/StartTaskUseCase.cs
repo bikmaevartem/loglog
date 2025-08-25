@@ -2,7 +2,7 @@
 
 namespace LogLog.UseCases.Tasks.Start
 {
-    public class StartTaskUseCase : IUseCase<StartTaskRequest, StartTaskResponse>
+    public class StartTaskUseCase : IUseCase<StartTaskUseCaseRequest, StartTaskUseCaseResponse>
     {
        private readonly ITaskRepository _taskRepository;
 
@@ -11,11 +11,11 @@ namespace LogLog.UseCases.Tasks.Start
             _taskRepository = taskRepository;
         }
 
-        public async Task<StartTaskResponse> ExecuteAsync(StartTaskRequest request)
+        public async Task<StartTaskUseCaseResponse> ExecuteAsync(StartTaskUseCaseRequest request)
         {
             await _taskRepository.StartAsync(request.TaskId);
 
-            return new StartTaskResponse();
+            return new StartTaskUseCaseResponse();
         }
     }
 }
