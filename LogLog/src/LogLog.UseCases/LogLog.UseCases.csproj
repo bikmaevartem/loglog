@@ -10,8 +10,4 @@
     <ProjectReference Include="..\LogLog.Domain\LogLog.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Mappers\" />
-  </ItemGroup>
-
 </Project>

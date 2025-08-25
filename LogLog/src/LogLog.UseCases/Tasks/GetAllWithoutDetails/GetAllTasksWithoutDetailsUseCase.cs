@@ -1,4 +1,5 @@
 ﻿using LogLog.Domain.Interfaces;
+using LogLog.UseCases.Dto;
 
 namespace LogLog.UseCases.Tasks.GetAllWithoutDetails
 {
@@ -14,9 +15,16 @@ namespace LogLog.UseCases.Tasks.GetAllWithoutDetails
         {
             var tasks = await _taskRepository.GetTasksOnlyAsync();
 
-            var responseTasks = tasks.Select(t => new { });
+            var responseTasks = tasks.Select(t => new TaskDto
+            {
+                Id = t.Id,
+                Name = t.Name,
+                Description = t.Description,
+                IsExecuting = t.IsExecuting,
+                IsCompleted = t.IsCompleted,
+            }).ToList();
 
-            return new GetAllTasksWithoutDetailsResponse();
+            return new GetAllTasksWithoutDetailsResponse { Tasks = responseTasks};
         }
     }
 }
