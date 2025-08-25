@@ -1,6 +1,6 @@
-﻿namespace LogLog.UseCases.Tasks.Start
+﻿using LogLog.UseCases.Dto;
+
+namespace LogLog.UseCases.Tasks.Start
 {
-    public class StartTaskUseCaseResponse
-    {
-    }
+    public record StartTaskUseCaseResponse(TaskUseCaseDto Task);
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LogLog.Workflows.Tasks.Create
 {
-    internal class CreateTaskWorkflowRequest
+    public class CreateTaskWorkflowRequest
     {
     }
 }

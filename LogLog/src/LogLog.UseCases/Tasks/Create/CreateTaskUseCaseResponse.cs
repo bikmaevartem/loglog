@@ -1,7 +1,6 @@
-﻿namespace LogLog.UseCases.Tasks.Create
+﻿using LogLog.UseCases.Dto;
+
+namespace LogLog.UseCases.Tasks.Create
 {
-    public class CreateTaskUseCaseResponse
-    {
-        public int TaskId { get; set; }
-    }
+    public record CreateTaskUseCaseResponse(TaskUseCaseDto Task);
 }

@@ -1,6 +1,4 @@
 ﻿namespace LogLog.UseCases.Tasks.Delete
 {
-    public class DeleteTaskUseCaseResponse
-    {
-    }
+    public record DeleteTaskUseCaseResponse;
 }

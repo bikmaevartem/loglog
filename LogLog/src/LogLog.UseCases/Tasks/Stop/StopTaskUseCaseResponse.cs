@@ -1,6 +1,6 @@
-﻿namespace LogLog.UseCases.Tasks.Stop
+﻿using LogLog.UseCases.Dto;
+
+namespace LogLog.UseCases.Tasks.Stop
 {
-    public class StopTaskUseCaseResponse
-    {
-    }
+    public record StopTaskUseCaseResponse(TaskUseCaseDto Task);
 }

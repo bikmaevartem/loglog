@@ -1,9 +1,8 @@
 ﻿using LogLog.Domain.Interfaces;
-using LogLog.UseCases.Dto;
 
 namespace LogLog.UseCases.Tasks.GetAllWithoutDetails
 {
-    public class GetAllTasksWithoutDetailsUseCase : IUseCase<GetAllTasksWithoutDetailsUseCaseRequest, GetAllTasksWithoutDetailsUseCaseResponse>
+    public class GetAllTasksWithoutDetailsUseCase : BaseUseCase<GetAllTasksWithoutDetailsUseCaseRequest, GetAllTasksWithoutDetailsUseCaseResponse>
     {
         private readonly ITaskRepository _taskRepository;
         public GetAllTasksWithoutDetailsUseCase(ITaskRepository taskRepository) 
@@ -11,20 +10,13 @@ namespace LogLog.UseCases.Tasks.GetAllWithoutDetails
             _taskRepository = taskRepository;
         }
 
-        public async Task<GetAllTasksWithoutDetailsUseCaseResponse> ExecuteAsync(GetAllTasksWithoutDetailsUseCaseRequest request)
+        public override async Task<GetAllTasksWithoutDetailsUseCaseResponse> ExecuteAsync(GetAllTasksWithoutDetailsUseCaseRequest request)
         {
             var tasks = await _taskRepository.GetTasksOnlyAsync();
 
-            var responseTasks = tasks.Select(t => new TaskUseCaseDto
-            {
-                Id = t.Id,
-                Name = t.Name,
-                Description = t.Description,
-                IsExecuting = t.IsExecuting,
-                IsCompleted = t.IsCompleted,
-            }).ToList();
+            var responseTasks = tasks.Select(t => ConvertDomainModelToDto(t)).ToList();
 
-            return new GetAllTasksWithoutDetailsUseCaseResponse { Tasks = responseTasks};
+            return new GetAllTasksWithoutDetailsUseCaseResponse(Tasks: responseTasks);
         }
     }
 }

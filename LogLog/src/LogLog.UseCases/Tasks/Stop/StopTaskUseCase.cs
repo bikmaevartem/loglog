@@ -2,7 +2,7 @@
 
 namespace LogLog.UseCases.Tasks.Stop
 {
-    public class StopTaskUseCase : IUseCase<StopTaskUseCaseRequest, StopTaskUseCaseResponse>
+    public class StopTaskUseCase : BaseUseCase<StopTaskUseCaseRequest, StopTaskUseCaseResponse>
     {
         private readonly ITaskRepository _taskRepository;
 
@@ -11,11 +11,11 @@ namespace LogLog.UseCases.Tasks.Stop
             _taskRepository = taskRepository;
         }
 
-        public async Task<StopTaskUseCaseResponse> ExecuteAsync(StopTaskUseCaseRequest request)
+        public override async Task<StopTaskUseCaseResponse> ExecuteAsync(StopTaskUseCaseRequest request)
         {
-            await _taskRepository.StopAsync(request.TaskId);
+            var task = await _taskRepository.StopAsync(request.TaskId);
 
-            return new StopTaskUseCaseResponse();
+            return new StopTaskUseCaseResponse(Task: ConvertDomainModelToDto(task));
         }
     }
 }
