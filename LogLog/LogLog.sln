@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogLog.UI.WinUI", "src\LogL
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogLog.Console", "src\LogLog.Console\LogLog.Console.csproj", "{27D66B44-ED79-4761-AC2C-8DC0B474FB82}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogLog.Workflows", "src\LogLog.Workflows\LogLog.Workflows.csproj", "{594F3691-AC6D-467B-8E22-E2E00DE3A2B2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,10 @@ Global
 		{27D66B44-ED79-4761-AC2C-8DC0B474FB82}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27D66B44-ED79-4761-AC2C-8DC0B474FB82}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27D66B44-ED79-4761-AC2C-8DC0B474FB82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{594F3691-AC6D-467B-8E22-E2E00DE3A2B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{594F3691-AC6D-467B-8E22-E2E00DE3A2B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{594F3691-AC6D-467B-8E22-E2E00DE3A2B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{594F3691-AC6D-467B-8E22-E2E00DE3A2B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -65,6 +71,7 @@ Global
 		{DFCA473D-AD9C-40FA-ACC7-CB2AA6D8FC8F} = {0F58328A-F765-495C-BA98-841DEB1AB85A}
 		{7E2A4A01-9A38-46B9-AE0C-B9DEAC913E7D} = {0F58328A-F765-495C-BA98-841DEB1AB85A}
 		{27D66B44-ED79-4761-AC2C-8DC0B474FB82} = {36D591C7-65C7-A0D1-1CBC-10CDE441BDC8}
+		{594F3691-AC6D-467B-8E22-E2E00DE3A2B2} = {36D591C7-65C7-A0D1-1CBC-10CDE441BDC8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {48C9757E-2291-4430-A83B-2AF547C113C6}
