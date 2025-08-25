@@ -1,14 +1,9 @@
 ﻿using LogLog.UseCases;
 using LogLog.UseCases.Tasks.Create;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LogLog.Workflows.Tasks.Create
 {
-    public class CreateTaskWorkflow : IWorkflow<CreateTaskWorkflowRequest, CreateTaskWorkflowResponse>
+    public class CreateTaskWorkflow : BaseWorkflow<CreateTaskWorkflowRequest, CreateTaskWorkflowResponse>
     {
         private readonly IUseCase<CreateTaskUseCaseRequest, CreateTaskUseCaseResponse> _createTaskUseCase;
 
@@ -17,9 +12,15 @@ namespace LogLog.Workflows.Tasks.Create
             _createTaskUseCase = createTaskUseCase;
         }
 
-        public async Task<CreateTaskWorkflowResponse> ExecuteAsync(CreateTaskWorkflowRequest request)
+        public override async Task<CreateTaskWorkflowResponse> ExecuteAsync(CreateTaskWorkflowRequest request)
         {
-            throw new NotImplementedException();
+            var response = await _createTaskUseCase.ExecuteAsync(new CreateTaskUseCaseRequest(
+                Name: request.Name,
+                Description: request.Description
+                ));
+
+
+            return new CreateTaskWorkflowResponse(ConvertUseCaseModelToDto(response.Task));
         }
     }
 }

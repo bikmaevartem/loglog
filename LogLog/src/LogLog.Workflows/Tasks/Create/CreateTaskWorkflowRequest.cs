@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LogLog.Workflows.Tasks.Create
+﻿namespace LogLog.Workflows.Tasks.Create
 {
-    public class CreateTaskWorkflowRequest
-    {
-    }
+    public record CreateTaskWorkflowRequest(string Name, string? Description);
 }

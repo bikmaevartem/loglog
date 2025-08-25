@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LogLog.Workflows.Dto
+﻿namespace LogLog.Workflows.Dto
 {
-    internal class TaskWorkflowDto
-    {
-    }
+    public record TaskWorkflowDto(
+        int Id,
+        string Name,
+        string? Description,
+        bool IsExecuting,
+        bool IsCompleted
+        );
 }

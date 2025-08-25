@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LogLog.Workflows.Dto;
 
 namespace LogLog.Workflows.Tasks.Create
 {
-    public class CreateTaskWorkflowResponse
-    {
-    }
+    public record CreateTaskWorkflowResponse(TaskWorkflowDto Task);
 }
