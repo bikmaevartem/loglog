@@ -2,5 +2,5 @@
 
 namespace LogLog.UseCases.Tasks.GetAllWithoutDetails
 {
-    public record GetAllTasksWithoutDetailsUseCaseResponse(List<TaskUseCaseDto> Tasks);
+    public record GetAllTasksWithoutDetailsUseCaseResponse(List<TaskDto> Tasks);
 }

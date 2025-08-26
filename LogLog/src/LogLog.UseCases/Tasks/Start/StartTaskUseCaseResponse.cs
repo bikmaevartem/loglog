@@ -2,5 +2,5 @@
 
 namespace LogLog.UseCases.Tasks.Start
 {
-    public record StartTaskUseCaseResponse(TaskUseCaseDto Task);
+    public record StartTaskUseCaseResponse(TaskDto Task);
 }

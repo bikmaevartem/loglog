@@ -3,7 +3,7 @@ using LogLog.UseCases.Tasks.Create;
 
 namespace LogLog.Workflows.Tasks.Create
 {
-    public class CreateTaskWorkflow : BaseWorkflow<CreateTaskWorkflowRequest, CreateTaskWorkflowResponse>
+    public class CreateTaskWorkflow : IWorkflow<CreateTaskWorkflowRequest, CreateTaskWorkflowResponse>
     {
         private readonly IUseCase<CreateTaskUseCaseRequest, CreateTaskUseCaseResponse> _createTaskUseCase;
 
@@ -12,7 +12,7 @@ namespace LogLog.Workflows.Tasks.Create
             _createTaskUseCase = createTaskUseCase;
         }
 
-        public override async Task<CreateTaskWorkflowResponse> ExecuteAsync(CreateTaskWorkflowRequest request)
+        public async Task<CreateTaskWorkflowResponse> ExecuteAsync(CreateTaskWorkflowRequest request)
         {
             var response = await _createTaskUseCase.ExecuteAsync(new CreateTaskUseCaseRequest(
                 Name: request.Name,
@@ -20,7 +20,7 @@ namespace LogLog.Workflows.Tasks.Create
                 ));
 
 
-            return new CreateTaskWorkflowResponse(ConvertUseCaseModelToDto(response.Task));
+            return new CreateTaskWorkflowResponse(response.Task);
         }
     }
 }

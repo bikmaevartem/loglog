@@ -1,6 +1,6 @@
 ﻿namespace LogLog.UseCases.Dto
 {
-    public record SubTaskUseCaseDto
+    public record PeriodDto
     {
     }
 }

@@ -1,6 +1,6 @@
-﻿namespace LogLog.Workflows.Dto
+﻿namespace LogLog.UseCases.Dto
 {
-    public record TaskWorkflowDto(
+    public record TaskDto(
         int Id,
         string Name,
         string? Description,

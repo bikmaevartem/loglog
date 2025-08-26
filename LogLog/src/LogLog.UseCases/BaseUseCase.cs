@@ -7,9 +7,9 @@ namespace LogLog.UseCases
     {
         public abstract Task<TResponse> ExecuteAsync(TRequest request);
 
-        protected TaskUseCaseDto ConvertDomainModelToDto(TaskEntity task)
+        protected TaskDto ConvertDomainModelToDto(TaskEntity task)
         {
-            var taskDto = new TaskUseCaseDto(
+            var taskDto = new TaskDto(
                 Id: task.Id,
                 Name: task.Name,
                 Description: task.Description,

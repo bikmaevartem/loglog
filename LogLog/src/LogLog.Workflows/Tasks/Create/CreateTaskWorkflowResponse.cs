@@ -1,6 +1,6 @@
-﻿using LogLog.Workflows.Dto;
+﻿using LogLog.UseCases.Dto;
 
 namespace LogLog.Workflows.Tasks.Create
 {
-    public record CreateTaskWorkflowResponse(TaskWorkflowDto Task);
+    public record CreateTaskWorkflowResponse(TaskDto Task);
 }

@@ -8,8 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LogLog.Domain\LogLog.Domain.csproj" />
-    <ProjectReference Include="..\LogLog.UseCases\LogLog.UseCases.csproj" />
+    <ProjectReference Include="..\LogLog.Workflows\LogLog.Workflows.csproj" />
   </ItemGroup>
 
 </Project>

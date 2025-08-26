@@ -2,5 +2,5 @@
 
 namespace LogLog.UseCases.Tasks.Stop
 {
-    public record StopTaskUseCaseResponse(TaskUseCaseDto Task);
+    public record StopTaskUseCaseResponse(TaskDto Task);
 }
