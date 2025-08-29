@@ -10,7 +10,7 @@ namespace LogLog.Domain.Interfaces
 
         Task<TaskEntity> StopAsync(int id);
 
-        Task DeleteAsync(int id);
+        Task<TaskEntity> DeleteAsync(int id);
 
         Task<List<TaskEntity>> GetTasksOnlyAsync();
     }

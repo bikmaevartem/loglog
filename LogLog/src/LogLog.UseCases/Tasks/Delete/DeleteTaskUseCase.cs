@@ -2,7 +2,7 @@
 
 namespace LogLog.UseCases.Tasks.Delete
 {
-    public class DeleteTaskUseCase : IUseCase<DeleteTaskUseCaseRequest, DeleteTaskUseCaseResponse>
+    public class DeleteTaskUseCase : BaseUseCase<DeleteTaskUseCaseRequest, DeleteTaskUseCaseResponse>
     {
         private readonly ITaskRepository _taskRepository;
 
@@ -11,11 +11,11 @@ namespace LogLog.UseCases.Tasks.Delete
             _taskRepository = taskRepository;
         }
 
-        public async Task<DeleteTaskUseCaseResponse> ExecuteAsync(DeleteTaskUseCaseRequest request)
+        public override async Task<DeleteTaskUseCaseResponse> ExecuteAsync(DeleteTaskUseCaseRequest request)
         {
-            await _taskRepository.DeleteAsync(request.TaskId);
+            var task = await _taskRepository.DeleteAsync(request.TaskId);
 
-            return new DeleteTaskUseCaseResponse();
+            return new DeleteTaskUseCaseResponse(Task: ConvertDomainModelToDto(task));
         }
     }
 }
