@@ -7,4 +7,15 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\LogLog.Workflows\LogLog.Workflows.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Commands\Reader\" />
+    <Folder Include="Commands\Validator\" />
+    <Folder Include="Commands\Executor\" />
+    <Folder Include="Commands\Commands\" />
+  </ItemGroup>
+
 </Project>

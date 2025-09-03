@@ -4,16 +4,14 @@ namespace LogLog.Domain.Interfaces
 {
     public interface ITaskRepository
     {
-        Task<TaskEntity> CreateAsync(TaskEntity task);
+        Task<TaskEntity> CreateAsync(string name, string? description);
 
-        
-        Task<IReadOnlyList<TaskEntity>> GetAllAsync();
+        Task<TaskEntity> StartAsync(int id);
 
-        Task<IReadOnlyList<TaskEntity>> SearchAsync(string? name, string? description);
+        Task<TaskEntity> StopAsync(int id);
 
+        Task<TaskEntity> DeleteAsync(int id);
 
-        Task<TaskEntity?> StartAsync(int id);
-
-        Task<TaskEntity?> StopAsync(int id);
+        Task<List<TaskEntity>> GetTasksOnlyAsync();
     }
 }
