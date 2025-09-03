@@ -8,14 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LogLog.Workflows\LogLog.Workflows.csproj" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.8" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="9.0.8" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Commands\Reader\" />
-    <Folder Include="Commands\Validator\" />
-    <Folder Include="Commands\Executor\" />
-    <Folder Include="Commands\Commands\" />
+    <ProjectReference Include="..\LogLog.Workflows\LogLog.Workflows.csproj" />
   </ItemGroup>
 
 </Project>

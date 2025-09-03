@@ -1,4 +1,7 @@
-﻿using LogLog.Domain.Entities;
+﻿using LogLog.Console.Commands.Parser;
+using LogLog.Console.Shell;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace LogLog.Console
 {
@@ -6,20 +9,20 @@ namespace LogLog.Console
     {
         public static void Main(string[] args)
         {
-            Run();
-        }
-
-        private static void Run()
-        {
-            do
-            {
-                // Показ контекста и инф.
-                // Чтение команды
-                // Валдация команды
-                // Исполнение команды
+            using IHost host = Host.CreateDefaultBuilder(args)
+                .ConfigureServices((context, services) => 
+                {
+                    services.AddSingleton<ICommandParser, CliCommandParser>();
 
 
-            } while (false);
+
+                    services.AddSingleton<IShell, CliShell>();
+                })
+                .Build();
+
+            var app = host.Services.GetRequiredService<IShell>();
+            app.Run();
+
         }
     }
 }
