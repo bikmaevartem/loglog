@@ -1,6 +1,7 @@
 ﻿using LogLog.Console.Commands.Executor;
 using LogLog.Console.Commands.Parser;
 using LogLog.Console.Commands.Validators;
+using LogLog.Console.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,17 +10,24 @@ using System.Threading.Tasks;
 
 namespace LogLog.Console.Shell
 {
-    public class CliShell : IShell
+    public partial class CliShell : IShell
     {
+        private readonly IContext _context;
+
         private readonly ICommandParser _commandParser;
         private readonly ICommandValidator _commandValidator;
         private readonly ICommandExecutor _commandExecutor;
 
+        
+
         public CliShell(
+            IContext context,
             ICommandParser commandParser,
             ICommandValidator commandValidator,
             ICommandExecutor commandExecutor)
         {
+            _context = context;
+
             _commandParser = commandParser;
             _commandValidator = commandValidator;
             _commandExecutor = commandExecutor;
@@ -29,8 +37,9 @@ namespace LogLog.Console.Shell
         {
             do
             {
+                PrintContext();
                 // TODO show info, like last/top tasks or subtasks
-                // TODO show context
+
 
                 var rawCommand = System.Console.ReadLine();
                 var command = _commandParser.Parse(rawCommand);
@@ -44,9 +53,17 @@ namespace LogLog.Console.Shell
             while (true);
         }
 
-        public void Run(string[] args)
+
+        private void PrintLine(string? str)
         {
-            throw new NotImplementedException();
+            System.Console.Write(str);
         }
+
+        private void PrintContext()
+        {
+            PrintLine(_context.ToString());
+        }
+
+
     }
 }
