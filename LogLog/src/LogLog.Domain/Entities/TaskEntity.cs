@@ -2,6 +2,10 @@
 {
     public class TaskEntity : BaseTaskEntity
     {
+        public int GroupId { get; set; }
+
+        public GroupEntity Group { get; set; } = null!;
+
         public bool IsExecuting { get; set; }
 
         public bool IsCompleted { get; set; }
