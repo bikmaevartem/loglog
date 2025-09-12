@@ -2,13 +2,13 @@
 
 namespace LogLog.Console.Contexts.Types
 {
-    public class GlobalContext : IContext
+    public class WorkspaceContext : IContext
     {
-        private const string _contextName = "Log";
+        private const string _contextName = "Workspace";
 
-        public GlobalContext()
+        public WorkspaceContext()
         {
-            Type = ContextType.Global;
+            Type = ContextType.Workspace;
             Id = 0;
         }
 

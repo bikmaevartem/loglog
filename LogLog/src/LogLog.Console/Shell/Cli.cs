@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace LogLog.Console.Shell
 {
-    public partial class CliShell : IShell
+    public partial class Cli : IShell
     {
         private readonly IContext _context;
 
@@ -20,7 +20,7 @@ namespace LogLog.Console.Shell
 
         
 
-        public CliShell(
+        public Cli(
             IContext context,
             ICommandParser commandParser,
             ICommandValidator commandValidator,
@@ -33,7 +33,7 @@ namespace LogLog.Console.Shell
             _commandExecutor = commandExecutor;
         }
 
-        public void Run()
+        public async Task Run()
         {
             do
             {
@@ -46,7 +46,7 @@ namespace LogLog.Console.Shell
                 var isCommandValid = _commandValidator.IsValid(command);
                 if (isCommandValid)
                 {
-                    _commandExecutor.Execute(command);
+                    await _commandExecutor.ExecuteAsync(command);
                 }
 
             } 

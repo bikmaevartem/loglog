@@ -1,4 +1,6 @@
 ﻿using LogLog.Console.Commands.Executor;
+using LogLog.Console.Commands.Executors;
+using LogLog.Console.Commands.Executors.Workspace;
 using LogLog.Console.Commands.Parser;
 using LogLog.Console.Commands.Validators;
 using LogLog.Console.Context;
@@ -10,17 +12,15 @@ using LogLog.Infrastructure.SqlLite;
 using LogLog.UseCases;
 using LogLog.UseCases.Groups.Create;
 using LogLog.UseCases.Groups.GetAll;
-using LogLog.Workflows;
-using LogLog.Workflows.Groups.Create;
-using LogLog.Workflows.Groups.GetAll;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Threading.Tasks;
 
 namespace LogLog.Console
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             using IHost host = Host.CreateDefaultBuilder(args)
                 .ConfigureServices((context, services) => 
@@ -28,27 +28,22 @@ namespace LogLog.Console
                     // DB
                     RegisterDb(services);
 
-
                     // Use Cases
                     RegisterUseCases(services);
 
-                    // Workflows
-                    RegisterWorkflows(services);
+                    RegisterCommandExecutors(services);
 
 
+                    services.AddSingleton<IContext, WorkspaceContext>();
+                    services.AddScoped<ICommandParser, CommandParser>();
+                    services.AddScoped<ICommandValidator, CommandValidator>();
 
-                    services.AddSingleton<IContext, GlobalContext>();
-
-                    services.AddScoped<ICommandParser, CliCommandParser>();
-                    services.AddScoped<ICommandValidator, CliCommandValidator>();
-
-
-                    services.AddSingleton<IShell, CliShell>();
+                    services.AddSingleton<IShell, Cli>();
                 })
                 .Build();
 
             var app = host.Services.GetRequiredService<IShell>();
-            app.Run();
+            await app.Run();
 
         }
 
@@ -66,11 +61,12 @@ namespace LogLog.Console
             services.AddTransient<IUseCase<GetAllGroupsUseCaseRequest, GetAllGroupsUseCaseResponse>, GetAllGroupsUseCase>();
         }
 
-        private static void RegisterWorkflows(IServiceCollection services)
+        private static void RegisterCommandExecutors(IServiceCollection services)
         {
-            // Groups
-            services.AddTransient<IWorkflow<CreateGroupWorkflowRequest, CreateGroupWorkflowResponse>, CreateGroupWorkflow>();
-            services.AddTransient<IWorkflow<GetAllGroupsWorkflowRequest, GetAllGroupsWorkflowResponse>, GetAllGroupsWorkflow>();
+            services.AddScoped<ICommandExecutor, RootCommandExecutor>();
+            services.AddScoped<IWorkspaceCommandExecutor, WorkspaceCommandExecutor>();
+
         }
+
     }
 }

@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LogLog.Infrastructure\LogLog.Infrastructure.csproj" />
-    <ProjectReference Include="..\LogLog.Workflows\LogLog.Workflows.csproj" />
+    <ProjectReference Include="..\LogLog.UseCases\LogLog.UseCases.csproj" />
   </ItemGroup>
 
 </Project>

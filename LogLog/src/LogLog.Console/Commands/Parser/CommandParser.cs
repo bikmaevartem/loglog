@@ -1,6 +1,6 @@
 ﻿namespace LogLog.Console.Commands.Parser
 {
-    public class CliCommandParser : ICommandParser
+    public class CommandParser : ICommandParser
     {
         public Command Parse(string? command)
         {

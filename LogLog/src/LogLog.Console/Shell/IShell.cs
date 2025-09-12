@@ -2,6 +2,6 @@
 {
     public interface IShell
     {
-        void Run();
+        Task Run();
     }
 }

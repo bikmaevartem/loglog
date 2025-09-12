@@ -1,6 +1,6 @@
 ﻿namespace LogLog.Console.Commands.Validators
 {
-    public class CliCommandValidator : ICommandValidator
+    public class CommandValidator : ICommandValidator
     {
         public bool IsValid(Command command)
         {

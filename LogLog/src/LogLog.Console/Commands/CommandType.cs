@@ -4,5 +4,8 @@
     {
         Unknown,
         Create,
+        List,
+        Open,
+        Back,
     }
 }

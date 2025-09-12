@@ -7,5 +7,7 @@
             Name = name;
             Description = description;
         }
+
+        public List<TaskEntity> Tasks { get; set; } = new();
     }
 }
