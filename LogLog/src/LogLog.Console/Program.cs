@@ -1,5 +1,6 @@
 ﻿using LogLog.Console.Commands.Executor;
 using LogLog.Console.Commands.Executors;
+using LogLog.Console.Commands.Executors.Group;
 using LogLog.Console.Commands.Executors.Workspace;
 using LogLog.Console.Commands.Parser;
 using LogLog.Console.Commands.Validators;
@@ -59,14 +60,15 @@ namespace LogLog.Console
             services.AddTransient<IUseCase<GetAllGroupsUseCaseRequest, GetAllGroupsUseCaseResponse>, GetAllGroupsUseCase>();
             services.AddTransient<IUseCase<FindGroupUseCaseRequest, FindGroupUseCaseResponse>, FindGroupUseCase>();
             services.AddTransient<IUseCase<DeleteGroupUseCaseRequest, DeleteGroupUseCaseResponse>, DeleteGroupUseCase>();
+        
+            // Tasks
         }
 
         private static void RegisterCommandExecutors(IServiceCollection services)
         {
             services.AddScoped<ICommandExecutor, RootCommandExecutor>();
             services.AddScoped<IWorkspaceCommandExecutor, WorkspaceCommandExecutor>();
-
+            services.AddScoped<IGroupCommandExecutor, GroupCommandExecutor>();
         }
-
     }
 }

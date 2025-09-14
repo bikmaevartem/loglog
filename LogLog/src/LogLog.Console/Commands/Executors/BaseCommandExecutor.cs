@@ -16,8 +16,6 @@ namespace LogLog.Console.Commands.Executors
             Context.Context.Current.RemoveLastContext();
         }
 
-
-
         protected int? ConvertCommandParametersToInt(Command command)
         {
             if (int.TryParse(command.parameters, out var result))
