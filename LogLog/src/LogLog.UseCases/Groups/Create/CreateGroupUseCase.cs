@@ -1,10 +1,9 @@
 ﻿using LogLog.Domain.Entities;
 using LogLog.Domain.Interfaces.Repositories;
-using LogLog.UseCases.Dto;
 
 namespace LogLog.UseCases.Groups.Create
 {
-    public class CreateGroupUseCase : IUseCase<CreateGroupUseCaseRequest, CreateGroupUseCaseResponse>
+    public class CreateGroupUseCase : BaseGroupUseCase<CreateGroupUseCaseRequest, CreateGroupUseCaseResponse>
     {
         private readonly IGroupsRepository _groupsRepository;
 
@@ -13,21 +12,15 @@ namespace LogLog.UseCases.Groups.Create
             _groupsRepository = groupsRepository;
         }
 
-        public async Task<CreateGroupUseCaseResponse> ExecuteAsync(CreateGroupUseCaseRequest request)
+        public override async Task<CreateGroupUseCaseResponse> ExecuteAsync(CreateGroupUseCaseRequest request)
         {
             var groupEntity = new GroupEntity(name: request.Name, description: request.Description);
 
             var newGroupEntity = await _groupsRepository.AddAsync(groupEntity);
 
-            var newGroupDto = new GroupDto(
-                Id: newGroupEntity.Id,
-                Name: newGroupEntity.Name,
-                Description: newGroupEntity.Description,
-                Created: newGroupEntity.Created,
-                Updated: newGroupEntity.Updated
-                );
-
-            return new CreateGroupUseCaseResponse(newGroupDto);
+            #pragma warning disable CS8604 // Возможно, аргумент-ссылка, допускающий значение NULL.
+            return new CreateGroupUseCaseResponse(ConvertEntityToDto(newGroupEntity));
+            #pragma warning restore CS8604 // Возможно, аргумент-ссылка, допускающий значение NULL.
         }
     }
 }

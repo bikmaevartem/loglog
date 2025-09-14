@@ -1,6 +1,8 @@
 ﻿using LogLog.Domain.Interfaces.Repositories;
 using LogLog.Infrastructure.SqlLite;
 using Microsoft.EntityFrameworkCore;
+using System.Threading;
+using System.Xml.Linq;
 
 namespace LogLog.Infrastructure.SQLite
 {
@@ -49,14 +51,24 @@ namespace LogLog.Infrastructure.SQLite
             throw new NotImplementedException();
         }
 
-        public async Task<T?> GetByIdAsync(int id)
+        public async Task<T?> FindByIdAsync(int id)
         {
             return await _dbSet.FindAsync(new object[] { id });
         }
 
-        public async Task<T?> GetByNameAsync(string name)
+        public async Task<T?> FindByNameAsync(string name)
         {
-            return await _dbSet.FindAsync(new object[] { name });
+            return await FindByProperty("Name", name);
+        }
+
+        protected async Task<T?> FindByProperty<P>(string propertyName, P propertyValue) where P : class
+        {
+            var property = typeof(T).GetProperty(propertyName);
+            if (property == null)
+                throw new InvalidOperationException($"Entity {typeof(T).Name} does not have a {propertyName} property.");
+
+            return await _dbSet.FirstOrDefaultAsync(
+            x => EF.Property<P>(x, propertyName) == propertyValue);
         }
 
         

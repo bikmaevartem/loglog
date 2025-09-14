@@ -8,9 +8,9 @@
 
         Task DeleteAsync(int id);
 
-        Task<T?> GetByIdAsync(int id);
+        Task<T?> FindByIdAsync(int id);
 
-        Task<T?> GetByNameAsync(string name);
+        Task<T?> FindByNameAsync(string name);
 
         Task<IReadOnlyList<T>> GetAllAsync();
 

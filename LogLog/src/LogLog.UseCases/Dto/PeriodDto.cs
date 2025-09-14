@@ -1,6 +1,4 @@
 ﻿namespace LogLog.UseCases.Dto
 {
-    public record PeriodDto
-    {
-    }
+    public record PeriodDto(int Id);
 }
