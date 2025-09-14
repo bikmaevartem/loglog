@@ -5,6 +5,7 @@
         Unknown,
         Create,
         List,
+        Delete,
         Open,
         Back,
     }

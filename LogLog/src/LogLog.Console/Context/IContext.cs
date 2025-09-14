@@ -6,7 +6,13 @@
 
         int Id { get; }
 
-        IContext? Child { get; set; }
+        string Name { get; }
+
+        IContext? Child { get; }
+
+        void AddContext(IContext child);
+
+        void RemoveLastContext();
 
     }
 }

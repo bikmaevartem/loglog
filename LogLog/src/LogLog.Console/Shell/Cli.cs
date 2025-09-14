@@ -12,8 +12,6 @@ namespace LogLog.Console.Shell
 {
     public partial class Cli : IShell
     {
-        private readonly IContext _context;
-
         private readonly ICommandParser _commandParser;
         private readonly ICommandValidator _commandValidator;
         private readonly ICommandExecutor _commandExecutor;
@@ -21,13 +19,10 @@ namespace LogLog.Console.Shell
         
 
         public Cli(
-            IContext context,
             ICommandParser commandParser,
             ICommandValidator commandValidator,
             ICommandExecutor commandExecutor)
         {
-            _context = context;
-
             _commandParser = commandParser;
             _commandValidator = commandValidator;
             _commandExecutor = commandExecutor;
@@ -61,7 +56,7 @@ namespace LogLog.Console.Shell
 
         private void PrintContext()
         {
-            PrintLine(_context.ToString());
+            PrintLine(Context.Context.Current.ToString());
         }
 
 
