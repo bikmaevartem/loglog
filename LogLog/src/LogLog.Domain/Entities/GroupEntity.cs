@@ -6,6 +6,8 @@
         {
             Name = name;
             Description = description;
+            Created = DateTimeOffset.Now;
+            Updated = DateTimeOffset.Now;
         }
 
         public List<TaskEntity> Tasks { get; set; } = new();

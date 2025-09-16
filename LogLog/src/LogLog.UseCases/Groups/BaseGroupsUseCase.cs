@@ -3,7 +3,7 @@ using LogLog.UseCases.Dto;
 
 namespace LogLog.UseCases.Groups
 {
-    public abstract class BaseGroupUseCase<TRequest, TResponse> : IUseCase<TRequest, TResponse>
+    public abstract class BaseGroupsUseCase<TRequest, TResponse> : IUseCase<TRequest, TResponse>
     {
         public abstract Task<TResponse> ExecuteAsync(TRequest request);
 

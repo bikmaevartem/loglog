@@ -1,4 +1,4 @@
 ﻿namespace LogLog.UseCases.Tasks.GetAll
 {
-    public record GetAllTasksUseCaseRequest;
+    public record GetAllTasksUseCaseRequest(int GroupId);
 }

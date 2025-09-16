@@ -2,7 +2,7 @@
 
 namespace LogLog.UseCases.Groups.GetAll
 {
-    public class GetAllGroupsUseCase : BaseGroupUseCase<GetAllGroupsUseCaseRequest, GetAllGroupsUseCaseResponse>
+    public class GetAllGroupsUseCase : BaseGroupsUseCase<GetAllGroupsUseCaseRequest, GetAllGroupsUseCaseResponse>
     {
         private readonly IGroupsRepository _groupsRepository;
 

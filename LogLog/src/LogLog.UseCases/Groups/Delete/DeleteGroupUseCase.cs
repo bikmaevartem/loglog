@@ -2,7 +2,7 @@
 
 namespace LogLog.UseCases.Groups.Delete
 {
-    public class DeleteGroupUseCase : BaseGroupUseCase<DeleteGroupUseCaseRequest, DeleteGroupUseCaseResponse>
+    public class DeleteGroupUseCase : BaseGroupsUseCase<DeleteGroupUseCaseRequest, DeleteGroupUseCaseResponse>
     {
         private readonly IGroupsRepository _groupsRepository;
 

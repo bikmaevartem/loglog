@@ -2,7 +2,7 @@
 
 namespace LogLog.UseCases.Groups.Find
 {
-    public class FindGroupUseCase : BaseGroupUseCase<FindGroupUseCaseRequest, FindGroupUseCaseResponse>
+    public class FindGroupUseCase : BaseGroupsUseCase<FindGroupUseCaseRequest, FindGroupUseCaseResponse>
     {
         private readonly IGroupsRepository _groupsRepository;
 

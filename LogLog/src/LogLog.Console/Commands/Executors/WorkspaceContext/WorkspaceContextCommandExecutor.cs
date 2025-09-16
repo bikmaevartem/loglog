@@ -1,4 +1,4 @@
-﻿using LogLog.Console.Context;
+﻿using LogLog.Console.State;
 using LogLog.UseCases;
 using LogLog.UseCases.Dto;
 using LogLog.UseCases.Groups.Create;
@@ -6,16 +6,16 @@ using LogLog.UseCases.Groups.Delete;
 using LogLog.UseCases.Groups.Find;
 using LogLog.UseCases.Groups.GetAll;
 
-namespace LogLog.Console.Commands.Executors.Workspace
+namespace LogLog.Console.Commands.Executors.WorkspaceContext
 {
-    public class WorkspaceCommandExecutor : BaseCommandExecutor, IWorkspaceCommandExecutor
+    public class WorkspaceContextCommandExecutor : BaseCommandExecutor, IWorkspaceContextCommandExecutor
     {
         private readonly IUseCase<CreateGroupUseCaseRequest, CreateGroupUseCaseResponse> _createGroupUseCase;
         private readonly IUseCase<GetAllGroupsUseCaseRequest, GetAllGroupsUseCaseResponse> _getAllGroupsUseCase;
         private readonly IUseCase<FindGroupUseCaseRequest, FindGroupUseCaseResponse> _findGroupUseCase;
         private readonly IUseCase<DeleteGroupUseCaseRequest, DeleteGroupUseCaseResponse> _deleteGroupUseCase;
 
-        public WorkspaceCommandExecutor(
+        public WorkspaceContextCommandExecutor(
             IUseCase<CreateGroupUseCaseRequest, CreateGroupUseCaseResponse> createGroupUseCase,
             IUseCase<GetAllGroupsUseCaseRequest, GetAllGroupsUseCaseResponse> getAllGroupsUseCase,
             IUseCase<FindGroupUseCaseRequest, FindGroupUseCaseResponse> findGroupUseCase,
@@ -26,36 +26,6 @@ namespace LogLog.Console.Commands.Executors.Workspace
             _getAllGroupsUseCase = getAllGroupsUseCase;
             _findGroupUseCase = findGroupUseCase;
             _deleteGroupUseCase = deleteGroupUseCase;
-        }
-
-        public override async Task ExecuteAsync(Command command)
-        {
-            switch(command.Type)
-            {
-                case CommandType.Create:
-                    await ExecuteCreateCommand(command);
-                    break;
-
-                case CommandType.List:
-                    await ExecuteListCommand(command);
-                    break;
-
-                case CommandType.Delete:
-                    await ExecuteDeleteCommand(command);
-                    break;
-
-                case CommandType.Open:
-                    await ExecuteOpenCommand(command);
-                    break;
-
-                case CommandType.Back:
-                    ExecuteBackCommand();
-                    break;
-
-                default:
-                    // TODO show messsage: usuported command
-                    break;
-            }
         }
 
         private async Task ExecuteCreateCommand(Command command)
@@ -97,7 +67,7 @@ namespace LogLog.Console.Commands.Executors.Workspace
         {
             if (group != null)
             {
-                Context.Context.Current.AddContext(ContextFactory.CreateContext(group));
+                Context.Current.AddContext(ContextFactory.CreateContext(group));
             }
             else
             {

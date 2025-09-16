@@ -1,6 +1,6 @@
 ﻿using LogLog.UseCases.Dto;
 
-namespace LogLog.Console.Context
+namespace LogLog.Console.State
 {
     public static class ContextFactory    {
         public static IContext CreateContext(ContextType type)

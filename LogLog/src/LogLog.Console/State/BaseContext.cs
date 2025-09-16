@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace LogLog.Console.Context
+namespace LogLog.Console.State
 {
     public abstract class BaseContext : IContext
     {
@@ -46,7 +46,15 @@ namespace LogLog.Console.Context
 
         public virtual void AddContext(IContext child)
         {
-            Child = child;
+            if (Child != null)
+            {
+                Child.AddContext(child);
+            }
+            else
+            {
+                Child = child;
+            }
+            
         }
 
         public virtual void RemoveLastContext()

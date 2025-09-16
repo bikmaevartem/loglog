@@ -8,7 +8,7 @@
 
         public DateTimeOffset StartTime { get; set; }
         
-        public DateTimeOffset StopTime { get; set; }
+        public DateTimeOffset? StopTime { get; set; }
 
         public int TotalMinuts { get; set; }
 

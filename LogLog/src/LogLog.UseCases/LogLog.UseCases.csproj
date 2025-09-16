@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LogLog.Domain\LogLog.Domain.csproj" />
+    <ProjectReference Include="..\LogLog.Infrastructure\LogLog.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

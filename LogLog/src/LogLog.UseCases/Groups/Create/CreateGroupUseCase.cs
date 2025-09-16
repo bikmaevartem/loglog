@@ -3,7 +3,7 @@ using LogLog.Domain.Interfaces.Repositories;
 
 namespace LogLog.UseCases.Groups.Create
 {
-    public class CreateGroupUseCase : BaseGroupUseCase<CreateGroupUseCaseRequest, CreateGroupUseCaseResponse>
+    public class CreateGroupUseCase : BaseGroupsUseCase<CreateGroupUseCaseRequest, CreateGroupUseCaseResponse>
     {
         private readonly IGroupsRepository _groupsRepository;
 
@@ -16,11 +16,11 @@ namespace LogLog.UseCases.Groups.Create
         {
             var groupEntity = new GroupEntity(name: request.Name, description: request.Description);
 
-            var newGroupEntity = await _groupsRepository.AddAsync(groupEntity);
+            groupEntity = await _groupsRepository.AddAsync(groupEntity);
 
-            #pragma warning disable CS8604 // Возможно, аргумент-ссылка, допускающий значение NULL.
-            return new CreateGroupUseCaseResponse(ConvertEntityToDto(newGroupEntity));
-            #pragma warning restore CS8604 // Возможно, аргумент-ссылка, допускающий значение NULL.
+            #pragma warning disable CS8604
+            return new CreateGroupUseCaseResponse(ConvertEntityToDto(groupEntity));
+            #pragma warning restore CS8604
         }
     }
 }

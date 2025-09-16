@@ -1,4 +1,4 @@
-﻿namespace LogLog.Console.Context
+﻿namespace LogLog.Console.State
 {
     public class Context : BaseContext
     {
