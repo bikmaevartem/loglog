@@ -2,11 +2,14 @@
 {
     public enum CommandType
     {
-        Unknown,
         Create,
-        List,
-        Delete,
+        CreateAndStart,
         Open,
+        Start,
+        Stop,
+        Delete,
         Back,
+        List,
+        Unknown
     }
 }

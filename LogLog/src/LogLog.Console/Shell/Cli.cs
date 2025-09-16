@@ -1,7 +1,7 @@
 ﻿using LogLog.Console.Commands.Executor;
 using LogLog.Console.Commands.Parser;
 using LogLog.Console.Commands.Validators;
-using LogLog.Console.Context;
+using LogLog.Console.State;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,7 +56,7 @@ namespace LogLog.Console.Shell
 
         private void PrintContext()
         {
-            PrintLine(Context.Context.Current.ToString());
+            PrintLine(Context.Current.ToString());
         }
 
 

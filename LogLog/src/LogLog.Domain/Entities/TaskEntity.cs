@@ -2,13 +2,19 @@
 {
     public class TaskEntity : BaseTaskEntity
     {
+
+        public TaskEntity(int groupId, string name, string? description)
+        {
+            GroupId = groupId;
+            Name = name;
+            Description = description;
+            Created = DateTimeOffset.Now;
+            Updated = DateTimeOffset.Now;
+        }
+
         public int GroupId { get; set; }
 
         public GroupEntity Group { get; set; } = null!;
-
-        public bool IsExecuting { get; set; }
-
-        public bool IsCompleted { get; set; }
 
         public List<SubTaskEntity> SubTasks { get; set; } = new();
     }
