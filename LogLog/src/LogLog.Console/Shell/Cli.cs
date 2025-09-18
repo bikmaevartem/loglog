@@ -1,30 +1,21 @@
 ﻿using LogLog.Console.Commands.Executor;
 using LogLog.Console.Commands.Parser;
-using LogLog.Console.Commands.Validators;
 using LogLog.Console.State;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LogLog.Console.Shell
 {
     public partial class Cli : IShell
     {
         private readonly ICommandParser _commandParser;
-        private readonly ICommandValidator _commandValidator;
         private readonly ICommandExecutor _commandExecutor;
 
         
 
         public Cli(
             ICommandParser commandParser,
-            ICommandValidator commandValidator,
             ICommandExecutor commandExecutor)
         {
             _commandParser = commandParser;
-            _commandValidator = commandValidator;
             _commandExecutor = commandExecutor;
         }
 
@@ -35,19 +26,12 @@ namespace LogLog.Console.Shell
                 PrintContext();
                 // TODO show info, like last/top tasks or subtasks
 
-
                 var rawCommand = System.Console.ReadLine();
                 var command = _commandParser.Parse(rawCommand);
-                var isCommandValid = _commandValidator.IsValid(command);
-                if (isCommandValid)
-                {
-                    await _commandExecutor.ExecuteAsync(command);
-                }
-
+                await _commandExecutor.ExecuteAsync(command);
             } 
             while (true);
         }
-
 
         private void PrintLine(string? str)
         {

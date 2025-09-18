@@ -43,11 +43,11 @@ namespace LogLog.Console.Commands.Executors
                     break;
 
                 case CommandType.Unknown:
-                    PrintMessageUnknownCommand(command);
+                    await ExecuteUnknownAsync(command);
                     break;
 
                 default:
-                    PrintMessageUnsupportedCommand(command);
+                    await ExecuteDefaultAsync(command);
                     break;
             }
         }
@@ -110,11 +110,25 @@ namespace LogLog.Console.Commands.Executors
             return Task.CompletedTask;
         }
 
+        protected virtual Task ExecuteUnknownAsync(Command command)
+        {
+            PrintMessageUnknownCommand(command);
+
+            return Task.CompletedTask;
+        }
+
+        protected virtual Task ExecuteDefaultAsync(Command command)
+        {
+            PrintMessageUnsupportedCommand(command);
+
+            return Task.CompletedTask;
+        }
+
         #endregion
 
         protected void PrintMessageUnknownCommand(Command command)
         {
-            PrintService.PrintWarningLn($"Unknown command! Command - {command.rawType}. Parameters - {command.parameters}.");
+            PrintService.PrintWarningLn($"Unknown command. Command - {command.rawType}. Parameters - {command.parameters}.");
         }
 
         protected void PrintMessageUnsupportedCommand(Command command)
